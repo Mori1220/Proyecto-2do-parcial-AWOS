@@ -15,13 +15,13 @@ app.get('/', function (req, res) {
   });
  app.use(require('./routes/usuario'));
  
-mongoose.connect('mongodb://localhost:27017/cafteria', {
-    useNewUrlParser: true,
+mongoose.connect('mongodb://localhost:27017/cafeteria', {
+  useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false,
   useCreateIndex: true
-
-    }, (err, res) => {
+}, (err, res) => {
+    
    if(err) throw err;
    console.log('Base de datos ONLINE');
 
