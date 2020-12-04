@@ -1,5 +1,6 @@
 require('./config/config');
 const express = require('express');
+const mongoose = require ('mongoose');
 const bodyParser = require('body-parser');
 const app = express();
 
@@ -11,7 +12,7 @@ app.use(bodyParser.json());
  
  
 app.get('/', function (req, res) {
-  res.send('<h1>Bienvenido a mi servidor REST</h1');
+  res.send('<h1>Bienvenido a mi servidor REST(localhost)</h1');
 });
 app.get('/usuario', function (req, res) {
    res.json({
@@ -62,9 +63,19 @@ res.json({
     ok: 200,
     mensaje:'Usuario eliminado con exito',
     id: id
-});
+     });
  });
+mongoose.connect('mongodb://localhost:27017/cafteria', {
+    useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useFindAndModify: false,
+  useCreateIndex: true
 
+    }, (err, res) => {
+   if(err) throw err;
+   console.log('Base de datos ONLINE');
+
+});
 app.listen( process.env.PORT, () => {
     console.log('El servidor est en linea por el puerto ', process.env.PORT);
 } );
