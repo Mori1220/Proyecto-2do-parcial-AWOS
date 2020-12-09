@@ -2,6 +2,7 @@ require('./config/config');
 const express = require('express');
 const mongoose = require ('mongoose');
 const bodyParser = require('body-parser');
+const bcrypt = require ('bcrypt');
 const app = express();
 
 // parse application/x-www-form-urlencoded
@@ -13,11 +14,13 @@ app.use(bodyParser.json());
 app.get('/', function (req, res) {
     res.send(' <h1>Bienvenido a mi servidor REST(localhost)</h1');
   });
+ app.use(require('./routes/login'));
  app.use(require('./routes/usuario'));
  app.use(require('./routes/categoria'));
  app.use(require('./routes/productos'));
  
-mongoose.connect('mongodb://localhost:27017/cafeteria', {
+ 
+mongoose.connect('mongodb+srv://admin:moriana191465@cluster0.1umbf.mongodb.net/cafeteria', {
   useNewUrlParser: true,
   useCreateIndex: true,
   useUnifiedTopology: true,

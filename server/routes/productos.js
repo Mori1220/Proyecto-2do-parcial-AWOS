@@ -71,7 +71,7 @@ app.put('/productos/:id', (req, res) => {
        } 
 
        res.json({
-           ok: true,
+           ok: false,
            msg: 'Los productos fueron actualizados con exito',
            catDB
        })
